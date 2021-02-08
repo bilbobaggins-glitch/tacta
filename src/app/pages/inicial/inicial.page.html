@@ -1,0 +1,22 @@
+<ion-content class="">
+
+  <ion-list>
+    
+      <ion-button expand="block" [routerLink]="['/detalhescontato']">Adicionar</ion-button>
+
+  </ion-list>
+
+  <ion-searchbar (ionInput)="contatosBuscarPorNome($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let contato of contatosFiltrados" [routerLink]="['/detalhescontato', contato.id]">
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img [src]="contato.fotoDownloadURL | async">
+      </ion-avatar>
+      <ion-label>{{ contato.nome }}</ion-label>
+    </ion-item>
+
+  </ion-card>
+
+</ion-content>

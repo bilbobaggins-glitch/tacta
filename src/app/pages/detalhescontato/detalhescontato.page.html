@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/inicial"></ion-back-button>
+        </ion-buttons>
+
+    <div *ngIf="contato.id != undefined">
+      <ion-title>Contato detalhes</ion-title>
+    </div>
+
+    <div *ngIf="contato.id == undefined">
+      <ion-title>Novo contato</ion-title>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="contato != undefined">
+
+      <ion-item>
+          <ion-label position="floating">Nome </ion-label>
+          <ion-input [(ngModel)]="contato.nome"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Telefone </ion-label>
+          <ion-input [(ngModel)]="contato.telefone"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Email </ion-label>
+          <ion-input [(ngModel)]="contato.email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Selecione o arquivo desejado</ion-label>
+        </ion-item>
+  
+        <ion-item>
+          <ion-input type="file" (change)="uploadFile($event)"></ion-input>
+        </ion-item>
+  
+        <div *ngIf="contato.fotoDownloadURL != null">
+            <img [src]="contato.fotoDownloadURL | async" height="75">
+        </div>
+
+        <div *ngIf="contato.fotoDownloadURL == null && imgURL">
+            <img [src]="imgURL" height="75">
+        </div>
+
+  </div>
+
+        <ion-button expand="block" (click)="contatoAtualizar()">Salvar</ion-button>
+
+</ion-content>

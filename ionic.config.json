@@ -1,0 +1,7 @@
+{
+  "name": "tacta-windows",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
